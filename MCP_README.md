@@ -16,48 +16,12 @@ uv pip install -r requirements.txt
 python test_mcp.py
 ```
 
-### 3. Configure Claude Desktop
+### 3. Configure Claude Code
 
-#### Option A: Manual Configuration
-
-1. **Find your Claude Desktop config file**:
-   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-
-2. **Add the MCP server configuration**:
-   ```json
-   {
-     "mcpServers": {
-       "obsidian-vector-search": {
-         "command": "uv",
-         "args": [
-           "--directory",
-           "/ABSOLUTE/PATH/TO/YOUR/PROJECT",
-           "run",
-           "mcp_server.py"
-         ],
-         "env": {
-           "PYTHONPATH": "/ABSOLUTE/PATH/TO/YOUR/PROJECT"
-         }
-       }
-     }
-   }
-   ```
-
-3. **Update the path**: Replace `/ABSOLUTE/PATH/TO/YOUR/PROJECT` with your actual project path
-
-#### Option B: Use Provided Config
-
-Copy the provided configuration:
+Run this command:
 ```bash
-# Update the path in claude_desktop_config.json first
-cp claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+claude mcp add obsidian-search -- uv --directory /PATH/TO/obsidian_vector_search run mcp_server.py
 ```
-
-### 4. Restart Claude Desktop
-
-After updating the configuration, restart Claude Desktop to load the MCP server.
-
 ## 🔧 Available Tools
 
 The MCP server exposes these tools to AI models:
